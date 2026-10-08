@@ -30,4 +30,8 @@ Wave three (full-text paper reading, arXiv) and verifiers:
 - `research/wave3/audit/V-01` to `V-03`: independent re-verification (different model) of the readers' highest-impact numbers, with safe-to-apply lists.
 - Precedence: wave three as amended by its verifiers beats wave two beats wave one. `EVIDENCE.md` carries the reconciled numbers and lists what was corrected or dropped (E22).
 
+Wave four (build references):
+
+- `research/wave4/W4-01-oss-build-references.md`: component-by-component survey of open-source projects whose code, schemas or patterns the build can adopt, borrow or read, with licenses and last-commit dates; about 45 repos were cloned and read. Includes a "copy before Phase 0" list and the components with no good reference.
+
 Reading note: sourcing is uneven. Several researchers could not fetch primary documentation pages and relied on search summaries. Treat anything tagged UNVERIFIED, `[U]` or `[BK]` as a hypothesis until checked (see EVIDENCE.md E23 for what is still unreachable).
