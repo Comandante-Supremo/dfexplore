@@ -2,6 +2,7 @@
 
 A "dark factory" is an autonomous system that runs agentic exploration, updates and builds with humans only at the review boundary. This repo holds the research and the plan for building one on a home server with self-hosted CI runners, using Claude.
 
+- [examples/harness-compat.md](examples/harness-compat.md): worked example (not core design) of an `update` goal: keeping a multi-harness messaging tool compatible with upstream CLIs.
 - [BUILD_PLAN.md](BUILD_PLAN.md): agreed design, phased build plan, open decisions, and the second-pass research list. Start here.
 - Research (dated 2026-10-07; each file tags unverified claims):
 
