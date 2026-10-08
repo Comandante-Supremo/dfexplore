@@ -25,7 +25,7 @@ Proceed when one option is clearly dominant. Escalate for architectural or desig
 
 ## 3. Components
 
-**Supervisor.** Plain code, not an LLM. One daemon on SQLite (WAL) with launchd on the Mac host. Owns the goal state machine, leases and heartbeats, the cost ledger, budgets, stall detectors, the merge credential and the kill switch. Agents propose; the supervisor disposes. The Agent SDK and Claude Code give per-run caps and local session resume but no goal state machine, cross-process lease, cross-run ledger, idempotent side effects or escalation (E18), so the supervisor is thin but necessary. Temporal, Restate and DBOS are deferred (the objection is an extra server and workflow-code discipline, not a replay-model mismatch).
+**Supervisor.** Plain code, not an LLM: TypeScript on Node (owner decision, section 4). One daemon on SQLite (WAL) with launchd on the Mac host. Owns the goal state machine, leases and heartbeats, the cost ledger, budgets, stall detectors, the merge credential and the kill switch. Agents propose; the supervisor disposes. The Agent SDK and Claude Code give per-run caps and local session resume but no goal state machine, cross-process lease, cross-run ledger, idempotent side effects or escalation (E18), so the supervisor is thin but necessary. Temporal, Restate and DBOS are deferred (the objection is an extra server and workflow-code discipline, not a replay-model mismatch).
 
 **Key proxy (`keyproxy`).** The only component that holds provider API keys and forge tokens. Sandboxes reach providers only through it. It injects credentials, enforces a per-attempt egress allowlist with request-level checks (an allow-listed host can still carry an attacker's key, E8), enforces the per-attempt and per-goal USD caps from the ledger, and logs every request. This is the most important security component and is a named Phase 1 deliverable.
 
@@ -69,6 +69,7 @@ Proceed when one option is clearly dominant. Escalate for architectural or desig
 
 ## 4. Host and infrastructure (owner decisions)
 
+- **Stack:** TypeScript on Node, written by Claude Code sessions. Reasons: Claude Code and the primary Agent SDK are TypeScript, so stream-json types and the fail-closed SDK callback hooks (E18) are available first-hand, and Node suits a single process that supervises child processes and streams. Rules that follow: a deliberately small dependency set (better-sqlite3 and little else), exact-pinned with a lockfile, because the factory's own dependencies are a target of the factory; strict TypeScript; a `CLAUDE.md` in the repo stating these rules for the sessions that write it. `keyproxy` is also TypeScript unless it proves too hard to make fail-closed, in which case it becomes a small separate binary.
 - **Host:** Apple Silicon Mac, 32 GB or more, Docker Linux VMs. Consequences: launchd for the supervisor; containers in the VM rather than rootless Podman; no microVM tier; arm64 images for every tool.
 - **Forge:** local Forgejo with Forgejo Actions. Ephemeral runner support and whether a bot token's PRs trigger CI are unverified (E19) and must be checked before the first PR phase. **Fallback:** GitHub with JIT ephemeral runners (APIs verified, E19).
 - **Reachability:** Tailscale (or another VPN) for the answer page and ntfy actions; nothing public.

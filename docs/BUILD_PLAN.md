@@ -63,13 +63,13 @@ The factory is trusted to run unattended on `update` goals when, over 30 consecu
 - Upstream issues and comments: draft only; the owner approves.
 - Known-bad versions in downstream tools: bundled per release from the registry; no runtime fetch.
 - A non-Claude juror is wanted from the start; the provider is still open (below).
+- Implementation stack: TypeScript on Node, written by Claude Code sessions. SQLite through a synchronous driver (better-sqlite3), the TypeScript Agent SDK for worker and hook control, launchd plists for the supervisor. Dependency footprint kept deliberately small, because the factory's own dependencies are themselves a target of the factory; the repo carries a `CLAUDE.md` with these rules so later sessions keep to them.
 
 ### Open
 1. **Auth and billing** (deferred by the owner). Design for an API key behind a config setting. The Phase 1 billing test and the terms facts in E18 inform the choice. Decide before Phase 1 exits.
 2. **Non-Claude juror provider.** Which vendor and model, through which path (API or CLI), at what cost per verification, and who holds that key in `keyproxy`. Phase 6 cannot exit without it.
-3. **Implementation stack.** Recommendation: Python 3.12+, SQLite via the standard library, the Python Agent SDK, `launchd` plists for the supervisor. The owner's repos include a FastAPI service, which suggests Python is the maintained language. Confirm before Phase 0.
-4. **Forgejo viability.** Ephemeral runners and bot-token CI triggering are unverified (E19). Checked at the start of Phase 2; the fallback is already named.
-5. **Factory-level definition of done.** The proposal above needs the owner's thresholds.
+3. **Forgejo viability.** Ephemeral runners and bot-token CI triggering are unverified (E19). Checked at the start of Phase 2; the fallback is already named.
+4. **Factory-level definition of done.** The proposal above needs the owner's thresholds.
 
 ## Verification status
 
