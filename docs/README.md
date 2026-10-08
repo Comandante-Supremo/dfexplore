@@ -21,4 +21,10 @@ Wave two (primary-source verification) and audits:
 - `research/wave2/audit/A-01` to `A-08`: independent audits of each wave-two doc, run on a different model, with accept/modify/reject decisions for every proposed edit.
 - Precedence: where a wave-two doc or audit disagrees with a wave-one doc, the wave-two doc as amended by its audit wins. The wave-one docs have not been rewritten; `BUILD_PLAN.md` (v2) carries the accepted corrections. Known wave-two errors that audits rejected are listed in BUILD_PLAN section 6, so do not copy numbers from the W2 docs without checking the audit.
 
+Wave three (full-text paper reading, arXiv) and verifiers:
+
+- `research/wave3/R3-01` to `R3-05`: readers that opened the actual arXiv PDFs behind the wave-one and wave-two numbers (judges and reward hacking, dependency-update studies, options and builds, long-horizon agents, agent-authored PRs and incidents).
+- `research/wave3/audit/V-01` to `V-03`: independent re-verification (different model) of the readers' highest-impact numbers, with safe-to-apply lists.
+- Precedence: wave three as amended by its verifiers beats wave two beats wave one. `BUILD_PLAN.md` (v3) carries the reconciled numbers and lists what was corrected or dropped (section 6).
+
 Reading note: sourcing is uneven. Several researchers could not fetch primary documentation pages and relied on search summaries. Treat anything tagged UNVERIFIED, `[U]` or `[BK]` as a hypothesis until checked (see the second-pass list in the build plan).
