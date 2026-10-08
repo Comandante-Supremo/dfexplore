@@ -2,8 +2,10 @@
 
 A "dark factory" is an autonomous system that runs agentic exploration, updates and builds with humans only at the review boundary. This repo holds the research and the plan for building one on a home server with self-hosted CI runners, using Claude.
 
+- [DESIGN.md](DESIGN.md): the design decisions, each with an evidence pointer. Start here.
+- [BUILD_PLAN.md](BUILD_PLAN.md): phases with exit tests, owner decisions, open items.
+- [EVIDENCE.md](EVIDENCE.md): every number the design relies on, with its scope, source and verification status.
 - [examples/harness-compat.md](examples/harness-compat.md): worked example (not core design) of an `update` goal: keeping a multi-harness messaging tool compatible with upstream CLIs.
-- [BUILD_PLAN.md](BUILD_PLAN.md): agreed design, phased build plan, open decisions, and the second-pass research list. Start here.
 - Research (dated 2026-10-07; each file tags unverified claims):
 
 | Doc | Topic |
@@ -20,12 +22,12 @@ Wave two (primary-source verification) and audits:
 
 - `research/wave2/W2-01` to `W2-08`: second-pass research that corrects and deepens the docs above (harness CLI contracts, Claude SDK, dependency-update literature, verification and judges, long-horizon agents, options and builds, update tooling, factory prior art).
 - `research/wave2/audit/A-01` to `A-08`: independent audits of each wave-two doc, run on a different model, with accept/modify/reject decisions for every proposed edit.
-- Precedence: where a wave-two doc or audit disagrees with a wave-one doc, the wave-two doc as amended by its audit wins. The wave-one docs have not been rewritten; `BUILD_PLAN.md` (v2) carries the accepted corrections. Known wave-two errors that audits rejected are listed in BUILD_PLAN section 6, so do not copy numbers from the W2 docs without checking the audit.
+- Precedence: where a wave-two doc or audit disagrees with a wave-one doc, the wave-two doc as amended by its audit wins. The wave-one docs have not been rewritten; `DESIGN.md`, `BUILD_PLAN.md` and `EVIDENCE.md` carry the accepted corrections. Known wave-two errors that audits rejected are listed in EVIDENCE.md E22, so do not copy numbers from the W2 docs without checking the audit.
 
 Wave three (full-text paper reading, arXiv) and verifiers:
 
 - `research/wave3/R3-01` to `R3-05`: readers that opened the actual arXiv PDFs behind the wave-one and wave-two numbers (judges and reward hacking, dependency-update studies, options and builds, long-horizon agents, agent-authored PRs and incidents).
 - `research/wave3/audit/V-01` to `V-03`: independent re-verification (different model) of the readers' highest-impact numbers, with safe-to-apply lists.
-- Precedence: wave three as amended by its verifiers beats wave two beats wave one. `BUILD_PLAN.md` (v3) carries the reconciled numbers and lists what was corrected or dropped (section 6).
+- Precedence: wave three as amended by its verifiers beats wave two beats wave one. `EVIDENCE.md` carries the reconciled numbers and lists what was corrected or dropped (E22).
 
-Reading note: sourcing is uneven. Several researchers could not fetch primary documentation pages and relied on search summaries. Treat anything tagged UNVERIFIED, `[U]` or `[BK]` as a hypothesis until checked (see the second-pass list in the build plan).
+Reading note: sourcing is uneven. Several researchers could not fetch primary documentation pages and relied on search summaries. Treat anything tagged UNVERIFIED, `[U]` or `[BK]` as a hypothesis until checked (see EVIDENCE.md E23 for what is still unreachable).

@@ -1,6 +1,6 @@
 # Worked example: keeping a multi-harness messaging tool compatible with its upstream CLIs
 
-This is an example of goal type `update`, not part of the factory's core design. The factory itself is use-case agnostic (see `../BUILD_PLAN.md`). The example is useful because it exercises the contract-testing, constraints-registry and escalation paths against upstreams that change often and document their interfaces poorly.
+This is an example of goal type `update`, not part of the factory's core design. The factory itself is use-case agnostic (see `../DESIGN.md` and `../BUILD_PLAN.md`). The example is useful because it exercises the contract-testing, constraints-registry and escalation paths against upstreams that change often and document their interfaces poorly.
 
 Scenario: the owner's messaging tool talks to several coding-agent CLIs (Claude Code, Codex, OpenCode, Kimi, and possibly others). Each upstream release might change flags, output events, exit codes or config in a way that breaks the tool. The factory watches the releases, runs the tool's conformance suite against each new version, and decides: adapt the tool, pin/exclude the version, or escalate.
 
